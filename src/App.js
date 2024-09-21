@@ -33,7 +33,7 @@ function App() {
 
   const fetchProperties = async () => {
     try {
-      const response = await fetch('http://localhost:8080/propiedades/todos');
+      const response = await fetch('https://inmobiliariadyasoft.ue.r.appspot.com/propiedades/todos');
       const data = await response.json();
       setProperties(data);
     } catch (error) {
@@ -53,7 +53,7 @@ function App() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://localhost:8080/guardarPropiedad', {
+      const response = await fetch('https://inmobiliariadyasoft.ue.r.appspot.com/guardarPropiedad', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -84,7 +84,7 @@ function App() {
   const handleDeleteProperty = async () => {
     if (!deleteId) return;
     try {
-      const response = await fetch(`http://localhost:8080/eliminarPropiedad/${deleteId}`, {
+      const response = await fetch(`https://inmobiliariadyasoft.ue.r.appspot.com/eliminarPropiedad/${deleteId}`, {
         method: 'DELETE',
       });
 
@@ -101,7 +101,7 @@ function App() {
   const handleUpdateEstado = async () => {
     if (!updateId || updateEstado === '') return;
     try {
-      const response = await fetch(`http://localhost:8080/actualizarPropiedadEstado/${updateId}?estado=${updateEstado}`, {
+      const response = await fetch(`https://inmobiliariadyasoft.ue.r.appspot.com/actualizarPropiedadEstado/${updateId}?estado=${updateEstado}`, {
         method: 'PUT',
       });
 
@@ -117,7 +117,7 @@ function App() {
   // Function to filter properties by tipoPropiedad
   const filterByTipoPropiedad = async () => {
     try {
-      const response = await fetch(`http://localhost:8080/filtrarPropiedadesTipoPropiedad?tipoPropiedad=${filterTipoPropiedad}`);
+      const response = await fetch(`https://inmobiliariadyasoft.ue.r.appspot.com/filtrarPropiedadesTipoPropiedad?tipoPropiedad=${filterTipoPropiedad}`);
       const data = await response.json();
       setProperties(data);
     } catch (error) {
@@ -128,7 +128,7 @@ function App() {
   // Function to filter properties by price range
   const filterByPrecio = async () => {
     try {
-      const url = `http://localhost:8080/filtrarPropiedadesPrecio?minPrecio=${minPrecio}&maxPrecio=${maxPrecio}`;
+      const url = `https://inmobiliariadyasoft.ue.r.appspot.com/filtrarPropiedadesPrecio?minPrecio=${minPrecio}&maxPrecio=${maxPrecio}`;
       const response = await fetch(url);
       const data = await response.json();
       setProperties(data);
