@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import './App.css';
+import './style.css';
+
 
 function App() {
   // State to hold form data and properties from backend
