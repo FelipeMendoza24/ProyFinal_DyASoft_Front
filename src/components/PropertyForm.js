@@ -52,34 +52,58 @@ function PropertyForm({ fetchProperties }) {
   };
 
   return (
+
+    
     <form onSubmit={handleSubmit}>
-      <label>Nombre:</label>
+       
+      {/* Filters UI */}
+      <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+         
+        </div>
+        <div class="col-md-6">
+          <div class="detail-box">
+            <div class="heading_container">
+              <h2>
+                ¿Desea registrar una propiedad en nuestro sitio?
+              </h2>
+            </div>
+            <p>
+              -Llene los datos y en seguido se actualizara nuestra base de datos
+            </p>
+            
+          </div>
+        </div>
+      </div>
+    </div>
+      <h3>Nombre:</h3>
             <input type="text" name="nombre" value={formData.nombre} onChange={handleChange} required />
-            <label>Tipo Oferta:</label>
+            <h3>Tipo Oferta:</h3>
             <select name="tipoOferta" value={formData.tipoOferta} onChange={handleChange} required>
               <option value=""></option>
               <option value="Venta">Venta</option>
               <option value="Arriendo">Arriendo</option>
             </select>
-            <label>Ciudad:</label>
+            <h3>Ciudad:</h3>
             <input type="text" name="ciudad" value={formData.ciudad} onChange={handleChange} required />
-            <label>Dirección:</label>
+            <h3>Dirección:</h3>
             <input type="text" name="direccion" value={formData.direccion} onChange={handleChange} required />
-            <label>Tipo Propiedad:</label>
+            <h3>Tipo Propiedad:</h3>
             <select name="tipoPropiedad" value={formData.tipoPropiedad} onChange={handleChange} required>
               <option value=""></option>
               <option value="Casa">Casa</option>
               <option value="Apartamento">Apartamento</option>
             </select>
-            <label>Tamaño:</label>
+            <h3>Tamaño:</h3>
             <input type="number" name="tamano" value={formData.tamano} onChange={handleChange} required />
-            <label>Precio:</label>
+            <h3>Precio:</h3>
             <input type="number" name="precio" value={formData.precio} onChange={handleChange} required />
-            <label>Habitaciones:</label>
+            <h3>Habitaciones:</h3>
             <input type="number" name="habitaciones" value={formData.habitaciones} onChange={handleChange} required />
-            <label>Baños:</label>
+            <h3>Baños:</h3>
             <input type="number" name="banos" value={formData.banos} onChange={handleChange} required />
-            <label>Estado:</label>
+            <h3>Estado:</h3>
             <select name="estado" value={formData.estado} onChange={handleChange} required>
               <option value=""></option>
               <option value={true}>En Oferta</option>

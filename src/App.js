@@ -28,43 +28,54 @@ function App() {
 
   return (
     <div>
-      <div className="app-container">
-        {/* Left side for adding new property */}
-        <div className="left-side">
-          <h2>Gestión de Propiedades</h2>
+    <div className="app-container">
+      {/* Right side for filtering and listing properties */}
+      <div className="right-side">
+        <h2>Lista de Propiedades</h2>
 
-          {/* Form to add new property */}
-          <PropertyForm refreshProperties={refreshProperties} />
+        {/* Filtering section */}
+        <FilterSection
+          filterTipoPropiedad={filterTipoPropiedad}
+          setFilterTipoPropiedad={setFilterTipoPropiedad}
+          minPrecio={minPrecio}
+          setMinPrecio={setMinPrecio}
+          maxPrecio={maxPrecio}
+          setMaxPrecio={setMaxPrecio}
+          setProperties={setProperties}
+          refreshProperties={refreshProperties}
+        />
 
-          {/* Section for deleting a property by ID */}
-          <DeleteProperty deleteId={deleteId} setDeleteId={setDeleteId} refreshProperties={refreshProperties} />
+        {/* Property List */}
+        <PropertyList properties={properties} />
+      </div>
 
-          {/* Section for updating a property state by ID */}
-          <UpdateProperty updateId={updateId} setUpdateId={setUpdateId} updateEstado={updateEstado} setUpdateEstado={setUpdateEstado} refreshProperties={refreshProperties} />
-        </div>
-
-        {/* Right side for filtering and listing properties */}
-        <div className="right-side">
-          <h2>Lista de Propiedades</h2>
-
-          {/* Filtering section */}
-          <FilterSection
-            filterTipoPropiedad={filterTipoPropiedad}
-            setFilterTipoPropiedad={setFilterTipoPropiedad}
-            minPrecio={minPrecio}
-            setMinPrecio={setMinPrecio}
-            maxPrecio={maxPrecio}
-            setMaxPrecio={setMaxPrecio}
-            setProperties={setProperties}
-            refreshProperties={refreshProperties}
-          />
-
-          {/* Property List */}
-          <PropertyList properties={properties} />
-        </div>
+      {/* Left side for adding new property */}
+      <div className="left-side">
+      <section class="sale_section layout_padding-bottom">
+    <div class="container-fluid">
+      <div class="heading_container">
+        <h2>
+          Propiedades 
+        </h2>
       </div>
     </div>
-  );
+  </section>
+
+        {/* Form to add new property */}
+        <PropertyForm refreshProperties={refreshProperties} />
+
+
+        {/* Section for updating a property state by ID */}
+        <UpdateProperty updateId={updateId} setUpdateId={setUpdateId} updateEstado={updateEstado} setUpdateEstado={setUpdateEstado} refreshProperties={refreshProperties} />
+
+        {/* Section for deleting a property by ID */}
+        <DeleteProperty deleteId={deleteId} setDeleteId={setDeleteId} refreshProperties={refreshProperties} />
+
+        
+      </div>
+    </div>
+  </div>
+);
 }
 
 export default App;

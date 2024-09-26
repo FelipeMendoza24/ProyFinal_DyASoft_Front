@@ -22,8 +22,20 @@ function UpdateSection({ fetchProperties}) {
   };
   return (
     <div>
-      <h3>Actualizar Estado de Propiedad</h3>
-      <input
+      <section class="deal_section layout_padding-bottom">
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="detail-box">
+        <div class="heading_container">
+          <h2>
+            ¿Deseas actualizar el estado de una propiedad?
+          </h2>
+        </div>
+        <p>
+          Busca por su id, selecciona su tipo y actualiza.
+        </p>
+        <input
         type="text"
         placeholder="Ingrese ID de la propiedad"
         value={updateId}
@@ -35,6 +47,20 @@ function UpdateSection({ fetchProperties}) {
         <option value={false}>Adquirida</option>
       </select>
       <button onClick={handleUpdateEstado}>Actualizar Estado</button>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="img-box">
+        
+        <div class="box b1">
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+      
     </div>
   );
 }

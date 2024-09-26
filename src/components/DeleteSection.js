@@ -23,16 +23,43 @@ function DeleteSection({ deleteId, setDeleteId, fetchProperties }) {
   
   return (
     <div>
-      <h3>Eliminar Propiedad</h3>
-      <input
+      <section class="deal_section layout_padding-bottom">
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="detail-box">
+        <div class="heading_container">
+          <h2>
+            ¿Deseas eliminar una propiedad?
+          </h2>
+        </div>
+        <p>
+          - Busca por su id y podras realizar la eliminacion.
+        </p>
+        <input
         type="text"
         placeholder="Ingrese ID de la propiedad"
         value={deleteId}
         onChange={(e) => setDeleteId(e.target.value)}
       />
       <button onClick={handleDeleteProperty}>Eliminar</button>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="img-box">
+        
+        <div class="box b1">
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+      
     </div>
   );
 }
 
 export default DeleteSection;
+
