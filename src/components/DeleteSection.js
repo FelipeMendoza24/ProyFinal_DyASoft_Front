@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function DeleteSection({ setUpdateEstado, deleteId, setDeleteId, regreshProperties }) {
+function DeleteSection({ setUpdateEstado, deleteId, setDeleteId, refreshProperties }) {
  
   
   const handleDeleteProperty = async () => {
@@ -11,7 +11,7 @@ function DeleteSection({ setUpdateEstado, deleteId, setDeleteId, regreshProperti
       });
 
       if (response.ok) {
-        regreshProperties(); // Fetch updated properties after deletion
+        refreshProperties(); // Fetch updated properties after deletion
         setDeleteId('');
         setUpdateEstado(''); // Reset delete ID field
       }

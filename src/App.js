@@ -5,17 +5,19 @@ import PropertyList from './components/PropertyList';
 import FilterSection from './components/FilterSection';
 import DeleteProperty from './components/DeleteSection';
 import UpdateProperty from './components/UpdateSection';
+
 import './style.css';
 
 function App() {
   const [properties, setProperties] = useState([]);
- 
   const [filterTipoPropiedad, setFilterTipoPropiedad] = useState('');
   const [minPrecio, setMinPrecio] = useState('');
   const [maxPrecio, setMaxPrecio] = useState('');
   const [deleteId, setDeleteId] = useState('');
   const [updateId, setUpdateId] = useState('');
   const [updateEstado, setUpdateEstado] = useState('');
+  const [filterCiudad, setFilterCiudad] = useState('');
+  const [filterNombre, setFilterNombre] = useState('');
 
   useEffect(() => {
     fetchProperties(setProperties);
@@ -40,8 +42,12 @@ function App() {
           minPrecio={minPrecio}
           setMinPrecio={setMinPrecio}
           maxPrecio={maxPrecio}
+          filterCiudad={filterCiudad}
+          setFilterCiudad={setFilterCiudad}
           setMaxPrecio={setMaxPrecio}
           setProperties={setProperties}
+          filterNombre={filterNombre}
+          setFilterNombre={setFilterNombre}
           refreshProperties={refreshProperties}
         />
 
@@ -61,9 +67,11 @@ function App() {
     </div>
   </section>
 
+        
+
+        
         {/* Form to add new property */}
         <PropertyForm refreshProperties={refreshProperties} />
-
 
         {/* Section for updating a property state by ID */}
         <UpdateProperty updateId={updateId} setUpdateId={setUpdateId} updateEstado={updateEstado} setUpdateEstado={setUpdateEstado} refreshProperties={refreshProperties} />

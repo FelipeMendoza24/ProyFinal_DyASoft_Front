@@ -1,10 +1,11 @@
 import React from 'react';
 import { fetchProperties } from './fetchProperties';
 
-function FilterSection({ filterTipoPropiedad, setFilterTipoPropiedad, minPrecio, setMinPrecio, maxPrecio, setMaxPrecio,
- setProperties, regreshProperties}) 
- {
+function FilterSection({ filterCiudad, setFilterCiudad, filterTipoPropiedad, setFilterTipoPropiedad, minPrecio, setMinPrecio, maxPrecio, setMaxPrecio,
+ setProperties, filterNombre, setFilterNombre}) 
 
+ {
+  
   const filterByPrecio = async () => {
     if (minPrecio === '' || maxPrecio === '') {
       console.error('Por favor, ingrese un valor para el precio mínimo y máximo');
@@ -32,11 +33,22 @@ function FilterSection({ filterTipoPropiedad, setFilterTipoPropiedad, minPrecio,
   
   const filterByCiudad = async () => {
     try {
-      const response = await fetch(`https://inmobiliariadyasoft.ue.r.appspot.com/filtrarPropiedadesTipoPropiedad?tipoPropiedad=${filterTipoPropiedad}`);
+      const response = await fetch(`https://inmobiliariadyasoft.ue.r.appspot.com/filtrarPropiedadesCiudad?ciudad=${filterCiudad}`);
       const data = await response.json();
       setProperties(data);
     } catch (error) {
-      console.error('Error filtering by tipoPropiedad:', error);
+      console.error('Error filtering by ciudad:', error);
+    }
+  };
+
+  const filterByNombre = async () => {
+  
+    try {
+      const response = await fetch(`https://inmobiliariadyasoft.ue.r.appspot.com/propiedad/${filterNombre}`);
+      const data = await response.json();
+      setProperties(data);
+    } catch (error) {
+      console.error('Error filtering by nombre:', error);
     }
   };
 
@@ -45,6 +57,7 @@ function FilterSection({ filterTipoPropiedad, setFilterTipoPropiedad, minPrecio,
     setFilterTipoPropiedad('');  // Clear tipoPropiedad filter
     setMinPrecio('');            // Clear minPrecio filter
     setMaxPrecio('');  
+    setFilterNombre(''); 
     fetchProperties(setProperties);          // Clear maxPrecio filter
     
   };     // Fetch all properties again
@@ -78,7 +91,18 @@ function FilterSection({ filterTipoPropiedad, setFilterTipoPropiedad, minPrecio,
               <option value="Casa">Casa</option>
               <option value="Apartamento">Apartamento</option>
             </select>
-      <button onClick={filterByTipoPropiedad}>Filtrar por Tipo</button>
+            <button onClick={() => {
+  if (filterTipoPropiedad === "") {
+    clearFilters();
+  } else {
+    filterByTipoPropiedad();
+  }
+}}>Filtrar por Tipo</button>
+
+      <input type="text" value={filterCiudad} onChange={(e) => setFilterCiudad(e.target.value)} placeholder="Ingrese la ciudad" />
+
+<button onClick={filterByCiudad}>Filtrar por Ciudad</button>
+
             <h3>-Precios que se acomoden a tí</h3>
 
             <input type="number" value={minPrecio} onChange={(e) => setMinPrecio(e.target.value)} placeholder="Ingrese el precio mínimo" />
@@ -88,7 +112,18 @@ function FilterSection({ filterTipoPropiedad, setFilterTipoPropiedad, minPrecio,
       <button onClick={filterByPrecio}>Filtrar por Precio</button>
  
       <button onClick={clearFilters}>Eliminar Filtros</button>
-    </div>
+
+
+      <h3>-Nombre de la propiedad</h3>
+
+      <input type="text" value={filterNombre} onChange={(e) => setFilterNombre(e.target.value)} placeholder="Ingrese el nombre de la propiedad" />
+
+<button onClick={filterByNombre}>Filtrar por Nombre</button>
+</div>
+
+
+
+    
   );
 }
 
