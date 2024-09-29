@@ -1,7 +1,8 @@
 import React from 'react';
+import { fetchProperties } from './fetchProperties';
 
 function FilterSection({ filterTipoPropiedad, setFilterTipoPropiedad, minPrecio, setMinPrecio, maxPrecio, setMaxPrecio,
- setProperties, fetchProperties}) 
+ setProperties, regreshProperties}) 
  {
 
   const filterByPrecio = async () => {
@@ -18,6 +19,7 @@ function FilterSection({ filterTipoPropiedad, setFilterTipoPropiedad, minPrecio,
       console.error('Error filtering by precio:', error);
     }
   };
+
   const filterByTipoPropiedad = async () => {
     try {
       const response = await fetch(`https://inmobiliariadyasoft.ue.r.appspot.com/filtrarPropiedadesTipoPropiedad?tipoPropiedad=${filterTipoPropiedad}`);
@@ -28,12 +30,22 @@ function FilterSection({ filterTipoPropiedad, setFilterTipoPropiedad, minPrecio,
     }
   };
   
+  const filterByCiudad = async () => {
+    try {
+      const response = await fetch(`https://inmobiliariadyasoft.ue.r.appspot.com/filtrarPropiedadesTipoPropiedad?tipoPropiedad=${filterTipoPropiedad}`);
+      const data = await response.json();
+      setProperties(data);
+    } catch (error) {
+      console.error('Error filtering by tipoPropiedad:', error);
+    }
+  };
 
 
   const clearFilters = async () => {
     setFilterTipoPropiedad('');  // Clear tipoPropiedad filter
     setMinPrecio('');            // Clear minPrecio filter
-    setMaxPrecio('');            // Clear maxPrecio filter
+    setMaxPrecio('');  
+    fetchProperties(setProperties);          // Clear maxPrecio filter
     
   };     // Fetch all properties again
   
