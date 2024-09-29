@@ -57,7 +57,8 @@ function FilterSection({ filterCiudad, setFilterCiudad, filterTipoPropiedad, set
     setFilterTipoPropiedad('');  // Clear tipoPropiedad filter
     setMinPrecio('');            // Clear minPrecio filter
     setMaxPrecio('');  
-    setFilterNombre(''); 
+    setFilterNombre('')
+    setFilterCiudad(''); 
     fetchProperties(setProperties);          // Clear maxPrecio filter
     
   };     // Fetch all properties again
