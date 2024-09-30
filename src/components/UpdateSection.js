@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
+import { fetchProperties } from './fetchProperties';
 
-function UpdateSection({ fetchProperties}) {
-  const [properties, setProperties] = useState([]);
-  const [updateId, setUpdateId] = useState('');
-  const [updateEstado, setUpdateEstado] = useState('');
+function UpdateSection({ updateId, setUpdateId, updateEstado, setUpdateEstado, refreshProperties}) {
+
   const handleUpdateEstado = async () => {
     if (!updateId || updateEstado === '') return;
     try {
@@ -12,7 +11,7 @@ function UpdateSection({ fetchProperties}) {
       });
 
       if (response.ok) {
-        fetchProperties(); // Fetch updated properties after state change
+        refreshProperties(); // Fetch updated properties after state change
         setUpdateId(''); // Reset the update ID field
         setUpdateEstado(''); // Reset the estado field
       }

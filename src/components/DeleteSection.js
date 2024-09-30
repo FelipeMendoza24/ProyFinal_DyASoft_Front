@@ -1,9 +1,8 @@
 import React, { useState } from 'react';
 
-function DeleteSection({ deleteId, setDeleteId, fetchProperties }) {
-  const [properties, setProperties] = useState([]);
-  const [updateId, setUpdateId] = useState('');
-  const [updateEstado, setUpdateEstado] = useState('');
+function DeleteSection({ setUpdateEstado, deleteId, setDeleteId, refreshProperties }) {
+ 
+  
   const handleDeleteProperty = async () => {
     if (!deleteId) return;
     try {
@@ -12,7 +11,7 @@ function DeleteSection({ deleteId, setDeleteId, fetchProperties }) {
       });
 
       if (response.ok) {
-        fetchProperties(); // Fetch updated properties after deletion
+        refreshProperties(); // Fetch updated properties after deletion
         setDeleteId('');
         setUpdateEstado(''); // Reset delete ID field
       }

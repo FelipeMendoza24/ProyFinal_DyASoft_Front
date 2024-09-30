@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
-function PropertyForm({ fetchProperties }) {
-  const [properties, setProperties] = useState([]);
+function PropertyForm({ refreshProperties }) {
+
     const [formData, setFormData] = useState({
     nombre: '',
     tipoOferta:'' ,
@@ -32,7 +32,7 @@ function PropertyForm({ fetchProperties }) {
       });
 
       if (response.ok) {
-        fetchProperties();
+        refreshProperties();
         setFormData({
           nombre: '',
           tipoOferta: 'Venta',

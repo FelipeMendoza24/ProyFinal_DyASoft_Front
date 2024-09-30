@@ -8,7 +8,7 @@ function PropertyList({ properties }) {
           {/* Table headers */}
           <th>Nombre</th>
                   <th>Tipo Oferta</th>
-                  <th>Ciudad</th>
+                  <th>Ciudad</th> 
                   <th>Dirección</th>
                   <th>Tipo Propiedad</th>
                   <th>Tamaño</th>
